@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Matrix Determiner</title>
+</head>
+<body data-ng-app="matrix.determine" data-ng-controller="MainCtrl as ctrl">
+
+<h1>Determine Matrices!</h1>
+
+<form name="matDetermCtrl" data-ng-submit="ctrl.getOutput()">
+  <div>
+    <label for="matrix1">Matrix</label>
+    <div class="matrixContainer matrixContainer-bracket">
+      <textarea name="matrix1" id="matrix1" data-ng-model="ctrl.matrix.rawData" data-ng-change="ctrl.clearOutput(); ctrl.parseMatrix()" data-ng-list="&#10;" data-ng-trim="false" style="width: 250px; height: 250px;"></textarea>
+    </div>
+  </div>
+  <div>
+    <button type="submit">Determine matrix!</button>
+  </div>
+
+  <table data-ng-if="!!ctrl.output">
+    <thead>
+    <tr>
+      <th>Matrix</th>
+      <th>Dimensions (<em>m</em>&times;<em>n</em>)</th>
+      <th data-ng-repeat="(name, value) in ctrl.output['if']" data-ng-bind="name"></th>
+      <th>Transpose</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th>
+        <table>
+          <tbody>
+          <tr data-ng-repeat="row in ctrl.matrix.rep track by $index">
+            <td data-ng-repeat="col in row track by $index">
+              <samp data-ng-bind="col"></samp>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </th>
+      <td data-ng-bind="ctrl.output.width + '&times;' + ctrl.output.height"></td>
+      <td data-ng-repeat="(name, value) in ctrl.output['if']" data-ng-bind="value ? 'Yes' : 'No'"></td>
+      <th>
+        <table>
+          <tbody>
+          <tr data-ng-repeat="row in ctrl.output.transpose track by $index">
+            <td data-ng-repeat="col in row track by $index">
+              <samp data-ng-bind="col"></samp>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </th>
+    </tr>
+    </tbody>
+  </table>
+</form>
+
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/lodash/lodash.min.js"></script>
+<script src="src/mtx-determine/app.js"></script>
+<script src="src/mtx-determine/controllers/MainCtrl.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "matricks",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Temoto-kun/matricks",
+  "authors": [
+    "Allan Crisostomo <kiiroifuriku@hotmail.com>"
+  ],
+  "description": "Perhaps we are asking the wrong questions...",
+  "keywords": [
+    "matrix",
+    "linearAlgebra",
+    "math"
+  ],
+  "license": "Apache",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.5",
+    "jquery": "~2.1.4",
+    "lodash": "~3.10.1",
+    "mathjs": "~2.2.0"
+  }
+}

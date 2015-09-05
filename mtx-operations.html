@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Matrix Operator</title>
+</head>
+<body data-ng-app="matrix.operate" data-ng-controller="MainCtrl as ctrl">
+
+<h1>Operate on Matrices!</h1>
+
+<form>
+  <div class="matrixContainer matrixContainer-bracket">
+    <textarea data-ng-model="ctrl.matrix1.rawData" data-ng-change="ctrl.clearOutput(); ctrl.parseMatrix();" data-ng-list="&#10;" data-ng-trim="false" style="width: 250px; height: 250px;"></textarea>
+    <textarea data-ng-model="ctrl.matrix2.rawData" data-ng-change="ctrl.clearOutput(); ctrl.parseMatrix();" data-ng-list="&#10;" data-ng-trim="false" style="width: 250px; height: 250px;"></textarea>
+  </div>
+  <div>
+    <button type="button" data-ng-click="ctrl.getSum()">Add!</button>
+    <button type="button" data-ng-click="ctrl.getProduct()">Multiply!</button>
+  </div>
+
+  <table data-ng-if="!!ctrl.output">
+    <thead>
+    <tr>
+      <th>Matrix 1</th>
+      <th>Matrix 2</th>
+      <th>Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th>
+        <table>
+          <tbody>
+          <tr data-ng-repeat="row in ctrl.matrix1.rep track by $index">
+            <td data-ng-repeat="col in row track by $index">
+              <samp data-ng-bind="col"></samp>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </th>
+      <th>
+        <table>
+          <tbody>
+          <tr data-ng-repeat="row in ctrl.matrix2.rep track by $index">
+            <td data-ng-repeat="col in row track by $index">
+              <samp data-ng-bind="col"></samp>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </th>
+      <td>
+        <table>
+          <tbody>
+          <tr data-ng-repeat="row in ctrl.output track by $index">
+            <td data-ng-repeat="col in row track by $index">
+              <samp data-ng-bind="col"></samp>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</form>
+
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/lodash/lodash.min.js"></script>
+<script src="lib/mathjs/dist/math.min.js"></script>
+<script src="src/mtx-operations/app.js"></script>
+<script src="src/mtx-operations/controllers/MainCtrl.js"></script>
+</body>
+</html>
